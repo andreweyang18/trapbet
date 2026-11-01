@@ -11,7 +11,7 @@ This repo makes no profit claims; it measures hit rates against stated breakeven
 |---|---|
 | Backtest data (Experiment 1) | **Complete.** `data/bet_log.csv`: 261 MLB fantasy-score props from 2025, all dated, 158/261 hit (60.5%, Wilson 95% CI 54–66%). Hitters 112/178 (62.9%), pitchers 46/83 (55.4%). `data/high_stake_slips.csv`: 42 slips with ≥$100 stake. Both regenerate byte-identically from `build_log.py` / `build_high_stake.py`. |
 | Beta-binomial analysis | **Runs.** `analysis/beta_binomial.py` prints posteriors by split and saves [a plot](analysis/beta_binomial_posteriors.png). Beta(5.77, 4.23) prior; P(p > 57.7%) = 0.82 for all 261 props, 0.35 for the 83-prop pitcher control. |
-| Engines (scoring, devig, fair_line, simulate, trap, sizing) | **Not written.** Spec exists in CLAUDE.md; no code, tests, or examples in the repo. Nothing has been validated on live lines. |
+| Engines (scoring, devig, fair_line, simulate, trap, sizing) | **Built and unit-tested; worked example reproduces the hand calculation; not yet run on live lines.** `trapbet/engines/`, 59 tests in `tests/`. Pitcher weight tables are flagged `verified=False` and warn when used. |
 | Ingestion (DFS board + book odds snapshotter) | Not started. |
 | Streamlit UI | Not started. |
 | S1 / S6 signal reconstruction from game logs | Not started. |
@@ -26,7 +26,14 @@ python build_high_stake.py   # -> data/high_stake_slips.csv
 python analysis/beta_binomial.py
 ```
 
-Requires Python 3.10+, pandas, scipy, matplotlib.
+Run the tests and the worked example:
+
+```
+python -m pytest -q
+python examples/ohtani_example.py   # PrizePicks 9.5 from three book markets: fair FS 7.66, P(under) 0.68, 3 units (illustrative inputs)
+```
+
+Requires Python 3.10+; `pip install -r requirements.txt` (numpy, scipy, pandas, matplotlib, pytest).
 
 ## Breakeven convention
 
