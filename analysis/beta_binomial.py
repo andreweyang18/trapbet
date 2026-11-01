@@ -5,7 +5,7 @@ weight of 10 pseudo-observations. Posterior per split: Beta(a + wins, b + losses
 
 Reports, for each split: W/N, raw rate, Wilson 95% CI, posterior mean, 95% equal-tailed
 credible interval, P(p > 0.577) and P(p > 0.5). Saves overlapping posterior densities to
-analysis/beta_binomial_posteriors.png.
+figures/beta_binomial_posteriors.png.
 
 Usage:  python analysis/beta_binomial.py [path/to/bet_log.csv]
 """
@@ -131,7 +131,8 @@ def main():
     d = load(path)
     t = summarise(d)
     print_table(t)
-    out = plot(t, ROOT / "analysis" / "beta_binomial_posteriors.png")
+    (ROOT / "figures").mkdir(exist_ok=True)
+    out = plot(t, ROOT / "figures" / "beta_binomial_posteriors.png")
     print(f"\nplot -> {out.relative_to(ROOT)}")
 
 

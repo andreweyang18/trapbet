@@ -23,13 +23,24 @@ all 261** (exact $ for 79 screenshot rows; over/under-$100 band for the rest).
 
 Breakeven: 50% by the 50/50 convention used in the log; 57.7% per leg at real 3x 2-pick payouts.
 
+![Posterior hit rate by split](figures/beta_binomial_posteriors.png)
+
+*Beta-binomial posteriors with a Beta(5.77, 4.23) prior centred on the 57.7% breakeven (10 pseudo-observations). P(p > 57.7%): all 261 props 0.82; hitters (n = 178) 0.92; pitchers (n = 83) 0.35; hitter unders (n = 139) 0.93; star-list unders (n = 21) 0.76; stake ≥ $100 (n = 191) 0.97. Splits are nested, not independent. Regenerate with `python analysis/beta_binomial.py`.*
+
 By month: 03/25 3/8 (38%) · 04/25 25/33 (76%) · 05/25 31/56 (55%) · 06/25 23/39 (59%) · 07/25 37/60 (62%) · 08/25 19/29 (66%) · 09/25 5/14 (36%) · 10/25 15/22 (68%).
+
+![Monthly hit rate](figures/hit_rate_by_month.png)
+
+*Monthly hit rate with W/N above each point and Wilson 95% intervals; no smoothing. Three months have n < 15 and intervals wider than 40 points. Regenerate with `python analysis/make_figures.py`.*
 
 ## High-stake slips (slip-level, not deduped; screenshot window only)
 42 slips with visible stake ≥ $100. Fantasy legs 43/62 (69.4%). Only 15 slips won: on 8 of 20 mixed
 slips every fantasy leg hit and a non-fantasy partner lost ($1,417 of stake).
 
-## Interpretation (to be written by Andrew)
+## Interpretation
+
+> **PLACEHOLDER — Andrew to write.** The bullets below are working notes carried over from the draft, not final text.
+
 - Floor, not ceiling: the sample is every bet placed, including knowingly low-edge action.
 - Pitcher control fits the mechanism (component props tightly priced → small relative gap).
 - Sizing: conviction tracked results — 18-point gap on hitters, ~7 on pitchers; low-stake hitter unders ran at a coin flip.
