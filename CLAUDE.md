@@ -1,6 +1,6 @@
 # trapbet — project context for Claude Code
 
-Personal research tool (Andrew Yang) testing whether DFS fantasy-score lines (PrizePicks/Underdog)
+My personal research tool testing whether DFS fantasy-score lines (PrizePicks/Underdog)
 are mispriced relative to a fair line rebuilt from devigged sportsbook component props.
 Personal use only. No commercialization. Respect operator ToS. No profit claims anywhere.
 
@@ -11,11 +11,11 @@ Personal use only. No commercialization. Respect operator ToS. No profit claims 
   Hitter unders 89/139 (64.0%). Star-list unders 14/21. ≥$100 stake 123/191 (64.4%) vs <$100 35/70 (50.0%).
   Hitters ≥$100 95/143 (66.4%) vs <$100 17/35 (48.6%). S3 filled; S1/S2/S4/S5/S6/S7 blank.
 - DONE: `data/high_stake_slips.csv` — 42 slips with ≥$100 visible stake; fantasy legs 43/62 (69.4%).
-- DONE: Engines built and unit-tested (59+ tests), pitcher weights verified 2026-11-02, Ohtani example in window; not yet run on live lines.
+- DONE: Engines built and unit-tested (61 tests), pitcher weights verified 2026-11-02, Ohtani example in window; not yet run on live lines.
   `analysis/beta_binomial.py` runs (posteriors by split + plot). Public repo: https://github.com/andreweyang18/trapbet
 - NOT STARTED: ingest/ (DFS board + book odds snapshotter), Streamlit page, S1/S6 reconstruction script.
 
-## Data rules (do not change without asking Andrew)
+## Data rules (do not change without asking me, the project owner)
 - One row per player per game-date. Same-day line movement → one row; if results differ, count as WIN
   and tag `LINE_MOVE_FLIP` in notes (report with and without).
 - Fantasy-score markets only (all platforms). MLB only. Pitchers included, tagged `role=pitcher`.
@@ -25,11 +25,11 @@ Personal use only. No commercialization. Respect operator ToS. No profit claims 
 - `high_conf` = 1 if total real-money stake on that prop that day ≥ $100 (free bets = $0).
 - Rows tagged `BOTH_SIDES` (Schwellenbach 5/8, A. Garcia 5/23) and `DATE_TYPO?` are flagged, not resolved.
 - Notes-only rows are canonical for result; screenshots are canonical for date/stake/platform.
-- Platform codes: prizepicks, underdog, app_A ("Fantasy Points — Full Game"), app_B (fantasy points with American odds). Andrew to map app_A/app_B to ParlayPlay/Boom.
+- Platform codes: prizepicks, underdog, app_A ("Fantasy Points — Full Game"), app_B (fantasy points with American odds). I still need to map app_A/app_B to ParlayPlay/Boom.
 
 ## Rebuild
 `python build_log.py` regenerates data/bet_log.csv from data/mlbbets.txt (notes), the screenshot rows
-hardcoded in the script, and data/undated_fills.csv (Andrew's manual date/stake fills keyed by notes line #).
+hardcoded in the script, and data/undated_fills.csv (my manual date/stake fills keyed by notes line #).
 `python build_high_stake.py` regenerates data/high_stake_slips.csv.
 
 ## Next tasks, in order

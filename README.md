@@ -1,19 +1,21 @@
 # trapbet
 
+Built by Andrew Yang — Applied Mathematics, UCLA (Statistics & Data Science minor) — as a personal research project. [LinkedIn](https://www.linkedin.com/in/TODO-fill-in)
+
 Are DFS fantasy-score lines (PrizePicks, Underdog) mispriced relative to a fair line rebuilt from
 devigged sportsbook component props? This repo holds a 2025 MLB backtest of every fantasy-score prop
-one person placed, plus the engines to rebuild fair lines for a live test. Personal research only;
-no commercialization; nothing here is betting advice and no profit claim is made.
+I placed that season, plus the engines I am building to rebuild fair lines for a live test. It is
+personal research, not a commercial product and not betting advice, and I make no profit claim.
 
 ## Results
 
 **Headline.** 158 of 261 MLB fantasy-score props hit (60.5%, Wilson 95% CI 54–66%), against a
 57.7% per-leg breakeven on a 3x two-pick. The lower bound of the interval sits below breakeven.
 
-**Hitters vs pitchers.** Hitters 112/178 (62.9%, CI 56–70%). Pitchers, the control group, 46/83
+**Hitters vs pitchers.** Hitters 112/178 (62.9%, CI 56–70%). Pitchers, my control group, 46/83
 (55.4%, CI 45–66%). Hitter unders alone: 89/139 (64.0%).
 
-**Stake tiers.** Props staked at $100 or more: 123/191 (64.4%, CI 57–71%). Under $100: 35/70
+**Stake tiers.** Props I staked at $100 or more: 123/191 (64.4%, CI 57–71%). Under $100: 35/70
 (50.0%, CI 39–61%). Within hitters the gap is 95/143 (66.4%) vs 17/35 (48.6%).
 
 ![Hit rate by split](figures/hit_rate_by_split.png)
@@ -28,22 +30,23 @@ log convention and the 57.7% two-pick breakeven. Splits overlap; they are not in
 
 ## What this does and doesn't show
 
-- **Floor, not ceiling.** The sample is every bet placed, including knowingly low-edge action.
+- **Floor, not ceiling.** The sample is every bet I placed, including action I knew was low-edge.
   It is not a curated subset.
 - **Pitcher control.** Pitcher props sit closer to breakeven (46/83) than hitter props (112/178),
-  consistent with the mechanism being tested: pitcher component markets are priced tighter, so the
+  consistent with the mechanism I am testing: pitcher component markets are priced tighter, so a
   rebuilt fair line should disagree with the DFS line less often. One season is not proof of that.
-- **Sizing tracked results.** The ≥ $100 tier beat the < $100 tier by 14 points overall
-  (123/191 vs 35/70). Stakes were set before results were known, but the sample is small and the
-  split was not pre-registered.
+- **Sizing tracked results.** My ≥ $100 tier beat my < $100 tier by 14 points overall
+  (123/191 vs 35/70). I set stakes before results were known, but the sample is small and I did not
+  pre-register the split.
 - **Signals not yet measured.** Of the seven trap signals, only S3 (star list) is filled for the
   backtest. S1 (recent streak) and S6 (opposing pitcher) await game-log reconstruction. S2, S4,
   S5 and S7 need line captures that do not exist for 2025.
-- **The engine is unvalidated.** Its worked example is a regression test against a hand calculation
-  that uses the same devig convention. Passing it shows the arithmetic is reproduced, not that the
+- **The engine is unvalidated.** Its worked example is a regression test against my hand calculation,
+  which uses the same devig convention. Passing it shows the arithmetic is reproduced, not that the
   method prices lines correctly. That needs live lines and settled results.
 
-Full table, Beta-binomial posteriors, monthly rates and every data flag: [RESULTS.md](RESULTS.md).
+Full table, Beta-binomial posteriors, monthly rates, how I built the log, and every data flag:
+[RESULTS.md](RESULTS.md).
 
 ## How it works
 
@@ -67,8 +70,6 @@ Full table, Beta-binomial posteriors, monthly rates and every data flag: [RESULT
 | Ingestion (DFS board + book odds snapshotter) | Not started. |
 | Streamlit UI | Not started. |
 
-Working rules and task order: [CLAUDE.md](CLAUDE.md).
-
 ## Rebuild
 
 ```text
@@ -89,9 +90,9 @@ python examples/ohtani_example.py    # PrizePicks 9.5 from three book markets: f
   is available as `devig_one_sided(..., method="additive")`. This choice matters only when one side
   of a market is available; with real two-way prices the conventions mostly cancel, and the live
   snapshotter will capture both sides.
-- **The Ohtani example is a regression test, not a validation.** Its acceptance window was set from
+- **The Ohtani example is a regression test, not a validation.** I set its acceptance window from
   a hand calculation that uses the same devig convention.
-- **Scoring tables** were verified on 2026-11-02 against the platform scoring pages. Both platforms
-  have changed scoring before; re-check every table at the start of each season.
+- **Scoring tables.** I verified all four against the platform scoring pages on 2026-11-02. Both
+  platforms have changed scoring before, so I re-check every table at the start of each season.
 - **Breakeven convention.** `odds_or_payout` is 2.0 in the log (50/50 baseline). Real DFS breakeven
-  on a 3x two-pick is 57.7% per leg. Every rate is reported against both, next to its n.
+  on a 3x two-pick is 57.7% per leg. I report every rate against both, next to its n.

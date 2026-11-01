@@ -70,7 +70,7 @@ date,sport,platform,player,market,line,side,odds_or_payout,result,S1_streak,S2_p
 2025-05-25,mlb,app_A,Pete Alonso,fantasy_score,7,over,2.0,1,,,0,,,,,,,200,2,1,role=hitter; notes_match:line416; stake: 150+50
 2025-05-25,mlb,app_A,Lawrence Butler,fantasy_score,6.5,under,2.0,0,,,0,,,,,,,200,1,1,role=hitter; screenshot_only
 2025-05-27,mlb,app_A,Trea Turner,fantasy_score,7,under,2.0,1,,,0,,,,,,,195,4,1,role=hitter; notes_match:line408; 4 slips; stake: 100+50+25+20
-2025-05-27,mlb,app_A,Brandon Lowe,fantasy_score,7,under,2.0,1,,,0,,,,,,,195,4,1,role=hitter; notes_match:line352; LINE_MOVE_FLIP: under 6 lost on 4 slips (screenshot); notes record under 7 won; counted win per rule (user confirmed); stake: 100+25+20+50 (all on the under-6 slips)
+2025-05-27,mlb,app_A,Brandon Lowe,fantasy_score,7,under,2.0,1,,,0,,,,,,,195,4,1,role=hitter; notes_match:line352; LINE_MOVE_FLIP: under 6 lost on 4 slips (screenshot); notes record under 7 won; counted win per LINE_MOVE_FLIP rule (confirmed); stake: 100+25+20+50 (all on the under-6 slips)
 2025-05-27,mlb,app_A,Lawrence Butler,fantasy_score,5,under,2.0,0,,,0,,,,,,,100,3,1,role=hitter; notes_match:line410; 3 slips; stake: 25+50+25
 2025-05-28,mlb,app_A,Jose Altuve,fantasy_score,7.5,under,2.0,1,,,0,,,,,,,250,1,1,role=hitter; notes_match:line404
 2025-05-28,mlb,app_A,Lawrence Butler,fantasy_score,6.5,under,2.0,1,,,0,,,,,,,250,1,1,role=hitter; notes_match:line403

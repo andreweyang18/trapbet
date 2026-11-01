@@ -99,7 +99,7 @@ def plot(t, out):
     x = np.linspace(0.30, 0.90, 601)
     fig, ax = plt.subplots(figsize=(9, 5), dpi=150, facecolor=surface)
     ax.set_facecolor(surface)
-    plotted = t.iloc[:6]  # the six splits named in CLAUDE.md task 2
+    plotted = t.iloc[:6]  # the six primary splits; the stake < $100 comparison row is table-only
     for (r, c) in zip(plotted.itertuples(), colors):
         y = stats.beta(r.a, r.b).pdf(x)
         ax.plot(x, y, color=c, lw=2, label=f"{r.split}  {r.wins}/{r.n}")

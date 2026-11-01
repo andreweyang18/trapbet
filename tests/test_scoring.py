@@ -32,7 +32,7 @@ def test_pitcher_tables_verified_and_hand_computation():
     line = {"W": 1, "QS": 1, "K": 7, "IP": 6.0, "ER": 2}
     for plat in ("prizepicks", "underdog"):
         t = sc.weights(plat, "pitcher")
-        assert t.verified is True and "Verified by Andrew 2026-11-02" in t.note
+        assert t.verified is True and "Verified against the platform scoring pages 2026-11-02" in t.note
         assert "H" not in t.weights
     with warnings.catch_warnings():
         warnings.simplefilter("error")          # scoring a pitcher must not warn

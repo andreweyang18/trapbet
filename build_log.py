@@ -93,7 +93,7 @@ S=[
 ('2025-05-25','Pete Alonso','over',7,'app_A',1,'',200,2,'150+50'),
 ('2025-05-25','Lawrence Butler','under',6.5,'app_A',0,'',200,1,''),
 ('2025-05-27','Trea Turner','under',7,'app_A',1,'4 slips',195,4,'100+50+25+20'),
-('2025-05-27','Brandon Lowe','under',7,'app_A',1,'LINE_MOVE_FLIP: under 6 lost on 4 slips (screenshot); notes record under 7 won; counted win per rule (user confirmed)',195,4,'100+25+20+50 (all on the under-6 slips)'),
+('2025-05-27','Brandon Lowe','under',7,'app_A',1,'LINE_MOVE_FLIP: under 6 lost on 4 slips (screenshot); notes record under 7 won; counted win per LINE_MOVE_FLIP rule (confirmed)',195,4,'100+25+20+50 (all on the under-6 slips)'),
 ('2025-05-27','Lawrence Butler','under',5,'app_A',0,'3 slips',100,3,'25+50+25'),
 ('2025-05-28','Jose Altuve','under',7.5,'app_A',1,'',250,1,''),
 ('2025-05-28','Lawrence Butler','under',6.5,'app_A',1,'',250,1,''),
@@ -107,16 +107,16 @@ EXCLUDED_VOIDS=['2025-05-18 Chase Meidroth under 5 (void both platforms)','2025-
 # ---- notes ----
 lines=open('data/mlbbets.txt',encoding='utf-8').read().splitlines()
 pat=re.compile(r'^(.*?)\s+(under|over|u|o|iver)\s*([0-9]+(?:\.[0-9])?)\s+(.*?)(fantasy|facts).*?(✅|❌)',re.I)
-USER_EXCLUDED_LINES={199,200,201}  # Andrew deleted these from his checklist as not useful (only fantasy lines among them are affected)
+EXCLUDED_NOTE_LINES={199,200,201}  # excluded: not fantasy-score props
 notes=[]
 for i,l in enumerate(lines,1):
-    if i in USER_EXCLUDED_LINES: continue
+    if i in EXCLUDED_NOTE_LINES: continue
     if '✅' not in l and '❌' not in l: continue
     m=pat.search(l)
     if not m: continue
     name=norm(m.group(1)); side=m.group(2).lower(); side='under' if side=='u' else 'over' if side in('o','iver') else side
     line=float(m.group(3)); mid=m.group(4).strip(); res=1 if m.group(6)=='✅' else 0
-    if 'inning' in mid.lower(): continue  # partial-game fantasy excluded per Andrew
+    if 'inning' in mid.lower(): continue  # partial-game (1-3 inning) fantasy excluded by data rule
     market='fantasy_score'
     notes.append(dict(idx=i,name=name,side=side,line=line,res=res,market=market,raw=l.strip()))
 
@@ -144,7 +144,7 @@ for i,(d,pl,side,line,plat,res,note,stake,nsl,snote) in enumerate(S):
         odds_or_payout=2.0,result=res,S1_streak='',S2_popular='',S3_star=star(pl),S4_xplatform='',S5_fairgap='',S6_matchup='',S7_revmove='',
         model_p='',closing_line='',stake_usd=stake,n_slips=nsl,high_conf=1 if stake>=100 else 0,notes='; '.join(x for x in [f'role={role(pl)}',src,note,('stake: '+snote) if snote else ''] if x)))
 matched=set(assign.keys())
-# ---- Andrew's manual fills for notes-only rows (keyed by notes line number) ----
+# ---- manual date/stake fills for notes-only rows (keyed by notes line number) ----
 fills={}
 try:
     for f in csv.DictReader(open('data/undated_fills.csv',encoding='utf-8')): fills[int(f['notes_line'])]=f
@@ -160,7 +160,7 @@ for n in notes:
             if a[-1]!=b[-1]: return False
             return len(a)==1 or len(b)==1 or a[0]==b[0]
         dup=[r for r in rows if r['date']==f['date'] and same_person(r['player'],n['name']) and 'screenshot' in r['notes'] or ('notes_match' in r['notes'] and r['date']==f['date'] and same_person(r['player'],n['name']))]
-        dup=[r for r in dup if r['side']==n['side'] or n['idx'] in {134}]  # screenshot-dated rows are reliable; same player/day/side = same bet even if line moved (134 = Schwellenbach typo)  # 134 = Schwellenbach 5/8 'u34.5' typo, Andrew corrected to o34.5; same bet as screenshot row
+        dup=[r for r in dup if r['side']==n['side'] or n['idx'] in {134}]  # screenshot-dated rows are reliable; same player/day/side = same bet even if line moved (134 = Schwellenbach 5/8 'u34.5' typo, corrected to o34.5; same bet as screenshot row)
         if dup:
             r=dup[0]; r['notes']+=f"; MERGED notes line{n['idx']} ({n['raw']}) same player/day, stake_band={f['stake_band']}"
             if n['line']!=float(r['line']):

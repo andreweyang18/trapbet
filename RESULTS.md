@@ -1,11 +1,24 @@
 # Experiment 1 — 2025 MLB fantasy-score backtest (numbers frozen 2026-11-02, v2: all rows dated)
 
 ## What was measured
-Every MLB fantasy-score prop Andrew placed in the 2025 season, from a personal notes log cross-referenced
-against Pikkit slip history (80 screenshots, 3/28–5/28) and a manual Pikkit lookup for the rest. One row per
-player per game-date; voids dropped; same-day line movement collapsed to one row (2 rows resolved as wins
-under the flip rule, tagged `LINE_MOVE_FLIP`). **261 props, all dated (3/27–10/16/2025). Stake tier known for
-all 261** (exact $ for 79 screenshot rows; over/under-$100 band for the rest).
+Every MLB fantasy-score prop I placed in the 2025 season, from my notes log cross-referenced against Pikkit
+slip history (80 screenshots, 3/28–5/28) and my manual Pikkit lookup for the rest. **261 props, all dated
+(3/27–10/16/2025). Stake tier known for all 261** (exact $ for 79 screenshot rows; over/under-$100 band for the rest).
+
+### How I built the log
+- One row per player per game-date. When a line moved within a day I kept one row; where the two results
+  differed I counted the row as a win and tagged it `LINE_MOVE_FLIP` (2 rows; numbers below include them).
+- Fantasy-score markets only, every platform, MLB only. Pitchers are included and tagged `role=pitcher`.
+  I excluded partial-game (1–3 inning) fantasy props and all tennis, NBA and soccer legs.
+- I dropped voided legs, not the whole slip.
+- `odds_or_payout` is 2.0 for every row by convention (a 50/50 baseline). Real DFS breakeven is 57.7% per leg
+  on a 3x 2-pick, so I report both.
+- `high_conf` = 1 when my total real-money stake on that prop that day was ≥ $100 (free bets count as $0).
+- Where my notes and a screenshot disagreed, the notes decide the result and the screenshot decides the
+  date, stake and platform.
+- Rows tagged `BOTH_SIDES` and `DATE_TYPO?` are flagged, not resolved.
+- Platform codes: prizepicks, underdog, app_A ("Fantasy Points — Full Game"), app_B (fantasy points shown
+  with American odds). I still need to map app_A/app_B to ParlayPlay/Boom.
 
 | Slice | W/N | Rate | Wilson 95% CI |
 |---|---|---|---|
@@ -39,12 +52,12 @@ slips every fantasy leg hit and a non-fantasy partner lost ($1,417 of stake).
 
 ## Interpretation
 
-> **PLACEHOLDER — Andrew to write.** The bullets below are working notes carried over from the draft, not final text.
+> **PLACEHOLDER — to be written.** The bullets below are my working notes, not final text.
 
-- Floor, not ceiling: the sample is every bet placed, including knowingly low-edge action.
+- Floor, not ceiling: the sample is every bet I placed, including action I knew was low-edge.
 - Pitcher control fits the mechanism (component props tightly priced → small relative gap).
 - Sizing: conviction tracked results — 18-point gap on hitters, ~7 on pitchers; low-stake hitter unders ran at a coin flip.
-- Memory check: "~90% on star unders" measured as 14/21; Judge 6/7, Ohtani 4/4 (n small; shrink).
+- Memory check: I remembered "~90% on star unders"; it measured 14/21; Judge 6/7, Ohtani 4/4 (n small; shrink).
 
 ## What could NOT be measured historically
 S2 popularity, S4 cross-platform gap, S5 fair-line gap, S7 reverse movement — no line captures exist
@@ -54,5 +67,5 @@ No ROI (exact stakes for 79 rows only).
 ## Known data flags
 LINE_MOVE_FLIP ×2 (Eflin 4/2, Lowe 5/27); BOTH_SIDES ×2 (Schwellenbach 5/8, A. Garcia 5/23);
 DATE_TYPO? ×1 (Bo Naylor 9/17/23 → 2025); stake unreadable on 4 slips (excluded from slip table);
-notes duplicates kept per Andrew (Judge & Langford 7/13); 7 notes rows merged into screenshot rows as
-verifiably the same bet (Lugo 4/25, Gilbert 4/25, Judge 5/4 & 5/5, Schwellenbach 5/8, Tatis 5/10, Ramírez 5/11).
+notes duplicates for Judge & Langford 7/13 kept deliberately (I sometimes mis-dated entries); 7 notes rows
+merged into screenshot rows as verifiably the same bet (Lugo 4/25, Gilbert 4/25, Judge 5/4 & 5/5, Schwellenbach 5/8, Tatis 5/10, Ramírez 5/11).

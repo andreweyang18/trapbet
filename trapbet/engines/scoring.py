@@ -2,9 +2,9 @@
 
 What it does: holds per-platform, per-role point weights; scores a dict of stat counts (or expected
 counts, since scoring is linear); converts a line between platforms at a fixed component mix.
-Assumes: all four tables match PrizePicks / Underdog MLB scoring as verified by Andrew on
-2026-11-02. Both platforms have changed scoring before; re-check every table at the start of each
-season, because a stale weight silently shifts every fair line built on it.
+Assumes: all four tables match PrizePicks / Underdog MLB scoring as verified against the platform
+scoring pages on 2026-11-02. Both platforms have changed scoring before; re-check every table at the
+start of each season, because a stale weight silently shifts every fair line built on it.
 """
 from __future__ import annotations
 
@@ -27,7 +27,7 @@ class WeightTable:
     note: str = field(default="")
 
 
-VERIFIED_NOTE = "Verified by Andrew 2026-11-02 against platform scoring pages; re-check each season."
+VERIFIED_NOTE = "Verified against the platform scoring pages 2026-11-02; re-check each season."
 
 _TABLES: dict[tuple[Platform, Role], WeightTable] = {
     ("prizepicks", "hitter"): WeightTable(
