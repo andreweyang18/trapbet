@@ -27,12 +27,27 @@ def test_unknown_stat_raises():
         sc.weights("draftkings", "hitter")
 
 
-def test_pitcher_table_is_flagged_unverified_and_warns():
-    t = sc.weights("prizepicks", "pitcher")
-    assert t.verified is False and "TODO" in t.note
-    with pytest.warns(UserWarning, match="unverified"):
-        s = sc.score({"W": 1, "QS": 1, "K": 7, "IP": 6.0, "ER": 2}, "prizepicks", "pitcher")
-    assert s == pytest.approx(6 + 4 + 21 + 18 - 6)
+def test_pitcher_tables_verified_and_hand_computation():
+    import warnings
+    line = {"W": 1, "QS": 1, "K": 7, "IP": 6.0, "ER": 2}
+    for plat in ("prizepicks", "underdog"):
+        t = sc.weights(plat, "pitcher")
+        assert t.verified is True and "Verified by Andrew 2026-11-02" in t.note
+        assert "H" not in t.weights
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")          # scoring a pitcher must not warn
+        assert sc.score(line, "prizepicks", "pitcher") == pytest.approx(6 + 4 + 21 + 18 - 6)   # 43
+        assert sc.score(line, "underdog", "pitcher") == pytest.approx(5 + 5 + 21 + 18 - 6)     # 43
+    assert sc.score({"IP": 6.667}, "prizepicks", "pitcher") == pytest.approx(20.0, abs=1e-3)  # 1/out
+
+
+def test_pitcher_platforms_differ_on_w_and_qs_only():
+    pp = sc.weights("prizepicks", "pitcher").weights
+    ud = sc.weights("underdog", "pitcher").weights
+    assert set(pp) == set(ud) == set(sc.PITCHER_STATS)
+    differ = {k for k in pp if pp[k] != ud[k]}
+    assert differ == {"W", "QS"}
+    assert (pp["W"], pp["QS"], ud["W"], ud["QS"]) == (6, 4, 5, 5)
 
 
 def test_convert_line_scales_with_component_mix():

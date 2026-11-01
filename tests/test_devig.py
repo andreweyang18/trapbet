@@ -43,11 +43,25 @@ def test_power_shrinks_longshot_more_than_multiplicative():
     assert dog_p < dog_m and fav_p > fav_m
 
 
-def test_one_sided_devig():
+def test_one_sided_devig_multiplicative_default():
     assert dv.devig_one_sided(130 / 230, 0.05) == pytest.approx((130 / 230) / 1.05)
+    assert dv.devig_one_sided(130 / 230, 0.05, "multiplicative") == pytest.approx((130 / 230) / 1.05)
     assert dv.devig_one_sided(0.4, 0.0) == pytest.approx(0.4)
     with pytest.raises(ValueError):
         dv.devig_one_sided(0.4, -0.1)
+
+
+def test_one_sided_devig_additive():
+    assert dv.devig_one_sided(130 / 230, 0.05, "additive") == pytest.approx(130 / 230 - 0.025)
+    assert dv.devig_one_sided(0.2, 0.12, "additive") == pytest.approx(0.14)
+    # additive removes a fixed amount, so it cuts longshots harder than multiplicative
+    assert dv.devig_one_sided(0.2, 0.12, "additive") < dv.devig_one_sided(0.2, 0.12)
+    # and favourites less
+    assert dv.devig_one_sided(0.8, 0.05, "additive") > dv.devig_one_sided(0.8, 0.05)
+    with pytest.raises(ValueError):
+        dv.devig_one_sided(0.02, 0.12, "additive")
+    with pytest.raises(ValueError):
+        dv.devig_one_sided(0.5, 0.05, "power")
 
 
 def test_breakeven_per_leg():

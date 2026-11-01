@@ -2,12 +2,12 @@
 
 What it does: holds per-platform, per-role point weights; scores a dict of stat counts (or expected
 counts, since scoring is linear); converts a line between platforms at a fixed component mix.
-Assumes: hitter tables below match PrizePicks / Underdog MLB scoring as of 2025. Pitcher weights are
-UNVERIFIED (see PITCHER_NOTE) and scoring a pitcher emits a UserWarning rather than failing silently.
+Assumes: all four tables match PrizePicks / Underdog MLB scoring as verified by Andrew on
+2026-11-02. Both platforms have changed scoring before; re-check every table at the start of each
+season, because a stale weight silently shifts every fair line built on it.
 """
 from __future__ import annotations
 
-import warnings
 from dataclasses import dataclass, field
 from typing import Mapping
 
@@ -15,7 +15,7 @@ Platform = str  # "prizepicks" | "underdog"
 Role = str      # "hitter" | "pitcher"
 
 HITTER_STATS = ("1B", "2B", "3B", "HR", "R", "RBI", "BB", "HBP", "SB")
-PITCHER_STATS = ("W", "QS", "K", "IP", "ER", "H")
+PITCHER_STATS = ("W", "QS", "K", "IP", "ER")
 
 
 @dataclass(frozen=True)
@@ -27,29 +27,26 @@ class WeightTable:
     note: str = field(default="")
 
 
-PITCHER_NOTE = (
-    "TODO: verify against current PrizePicks and Underdog MLB pitcher scoring. Values are Andrew's "
-    "recollection (W 6, QS 4, K 3, IP 3 per inning = 1 per out, ER -3); H -0.6 is the least certain. "
-    "Do not treat pitcher fair lines as validated until this flag is True."
-)
+VERIFIED_NOTE = "Verified by Andrew 2026-11-02 against platform scoring pages; re-check each season."
 
 _TABLES: dict[tuple[Platform, Role], WeightTable] = {
     ("prizepicks", "hitter"): WeightTable(
         "prizepicks", "hitter",
         {"1B": 3, "2B": 5, "3B": 8, "HR": 10, "R": 2, "RBI": 2, "BB": 2, "HBP": 2, "SB": 5},
-        verified=True),
+        verified=True, note=VERIFIED_NOTE),
     ("underdog", "hitter"): WeightTable(
         "underdog", "hitter",
         {"1B": 3, "2B": 6, "3B": 8, "HR": 10, "R": 2, "RBI": 2, "BB": 3, "HBP": 3, "SB": 4},
-        verified=True),
+        verified=True, note=VERIFIED_NOTE),
+    # IP is scored per inning (3 per inning = 1 per out); no hits-allowed term on either platform.
     ("prizepicks", "pitcher"): WeightTable(
         "prizepicks", "pitcher",
-        {"W": 6, "QS": 4, "K": 3, "IP": 3, "ER": -3, "H": -0.6},
-        verified=False, note=PITCHER_NOTE),
+        {"W": 6, "QS": 4, "K": 3, "IP": 3, "ER": -3},
+        verified=True, note=VERIFIED_NOTE),
     ("underdog", "pitcher"): WeightTable(
         "underdog", "pitcher",
-        {"W": 6, "QS": 4, "K": 3, "IP": 3, "ER": -3, "H": -0.6},
-        verified=False, note=PITCHER_NOTE),
+        {"W": 5, "QS": 5, "K": 3, "IP": 3, "ER": -3},
+        verified=True, note=VERIFIED_NOTE),
 }
 
 
@@ -70,9 +67,6 @@ def score(components: Mapping[str, float], platform: Platform, role: Role) -> fl
     KeyError so a mislabeled input cannot silently score zero. Missing stats count as 0.
     """
     table = weights(platform, role)
-    if not table.verified:
-        warnings.warn(f"{table.platform}/{table.role} weights are unverified: {table.note}",
-                      UserWarning, stacklevel=2)
     unknown = set(components) - set(table.weights)
     if unknown:
         raise KeyError(f"unknown stat(s) {sorted(unknown)} for {table.platform}/{table.role}")

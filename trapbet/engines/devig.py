@@ -2,9 +2,12 @@
 
 What it does: American <-> implied probability; two-way devig (multiplicative, power); one-sided
 devig given an assumed hold; per-leg breakeven for an n-leg parlay paying payout_mult.
-Assumes: for one-sided markets the book's total implied probability is (1 + hold) and the hold is
-removed proportionally, i.e. fair = implied / (1 + hold). This is the multiplicative convention;
-other conventions (additive, power) give different fair numbers for longshots.
+ASSUMPTION, not a result: one-sided markets (only one side offered) are devigged as
+fair = implied / (1 + hold) with an *assumed* hold, i.e. the multiplicative convention. The additive
+alternative, fair = implied - hold / 2, gives a lower fair line (about 7.4 vs 7.66 in the Ohtani
+example). The choice only matters when one side of a market is available; with real two-way prices
+the two conventions mostly cancel, and the live snapshotter will capture both sides. Both are
+exposed via devig_one_sided(method=...) so the alternative is one keyword away.
 """
 from __future__ import annotations
 
@@ -53,16 +56,25 @@ def fair_prob_two_way(a: float, b: float, method: str = "multiplicative") -> flo
     raise ValueError(f"unknown method {method!r}; use 'multiplicative' or 'power'")
 
 
-def devig_one_sided(implied: float, hold: float) -> float:
-    """Fair probability for a market where only one side is offered.
+def devig_one_sided(implied: float, hold: float, method: str = "multiplicative") -> float:
+    """Fair probability for a market where only one side is offered, given an assumed hold.
 
-    Assumes total book implied = 1 + hold and removes it proportionally: fair = implied / (1 + hold).
+    method="multiplicative" (default): total book implied = 1 + hold, removed proportionally,
+    fair = implied / (1 + hold). method="additive": each side carries half the overround,
+    fair = implied - hold / 2. See the module docstring: this is an assumption, not a result.
     """
     if hold < 0:
         raise ValueError("hold must be >= 0")
     if not 0.0 < implied < 1.0:
         raise ValueError(f"implied must be in (0, 1), got {implied}")
-    return float(implied) / (1.0 + float(hold))
+    if method == "multiplicative":
+        return float(implied) / (1.0 + float(hold))
+    if method == "additive":
+        fair = float(implied) - float(hold) / 2.0
+        if fair <= 0.0:
+            raise ValueError(f"additive devig gives fair <= 0 for implied={implied}, hold={hold}")
+        return fair
+    raise ValueError(f"unknown method {method!r}; use 'multiplicative' or 'additive'")
 
 
 def breakeven_per_leg(payout_mult: float, n_legs: int) -> float:

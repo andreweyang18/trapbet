@@ -106,7 +106,8 @@ def signals(ctx: PropContext) -> dict[str, Optional[int]]:
 
 def lean(ctx: PropContext) -> Optional[str]:
     """Which side the signals point to: the fair-gap direction (S5) if it fires, else the matchup
-    direction (S6) if it fires, else the fade of a five-game streak (S1), else None."""
+    direction (S6) if it fires, else the fade of a five-game streak (S1), else None.
+    Order is deliberate: the quantitative gap outranks matchup, which outranks recency."""
     for d in (_s5_direction(ctx), _s6_direction(ctx)):
         if d:
             return d

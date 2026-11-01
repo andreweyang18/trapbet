@@ -11,7 +11,8 @@ Personal use only. No commercialization. Respect operator ToS. No profit claims 
   Hitter unders 89/139 (64.0%). Star-list unders 14/21. ≥$100 stake 123/191 (64.4%) vs <$100 35/70 (50.0%).
   Hitters ≥$100 95/143 (66.4%) vs <$100 17/35 (48.6%). S3 filled; S1/S2/S4/S5/S6/S7 blank.
 - DONE: `data/high_stake_slips.csv` — 42 slips with ≥$100 visible stake; fantasy legs 43/62 (69.4%).
-- NOT WRITTEN: engines (devig, fair_line, simulate, trap, sizing). Spec exists; no code. Build next.
+- DONE: Engines built and unit-tested (59+ tests), pitcher weights verified 2026-11-02, Ohtani example in window; not yet run on live lines.
+  `analysis/beta_binomial.py` runs (posteriors by split + plot). Public repo: https://github.com/andreweyang18/trapbet
 - NOT STARTED: ingest/ (DFS board + book odds snapshotter), Streamlit page, S1/S6 reconstruction script.
 
 ## Data rules (do not change without asking Andrew)
@@ -32,18 +33,14 @@ hardcoded in the script, and data/undated_fills.csv (Andrew's manual date/stake 
 `python build_high_stake.py` regenerates data/high_stake_slips.csv.
 
 ## Next tasks, in order
-1. WRITE the engines (scoring, devig, fair_line, simulate, trap, sizing) with tests; examples/ohtani_example.py must give fair FS ≈7.5–7.6, P(under 9.5)≈0.69–0.70, 3 units.
-2. `analysis/beta_binomial.py`: Beta prior centered at breakeven (Beta(5.77,4.23)), posterior for all /
-   hitters / pitchers / hitter unders / star unders / high_conf; report mean, 95% credible interval,
-   P(p > 0.577). Also Wilson CIs. Plot overlapping posteriors.
-3. `analysis/hierarchical_players.py`: partial pooling of per-player hit rates (empirical Bayes or PyMC).
+1. `scripts/reconstruct_signals.py`: for all 261 dated rows, pull game logs (pybaseball / MLB stats API) to fill
+   S1 (last-5 streak vs line) and S6 (opposing SP quartile by xFIP/K%). Report fill rate with n.
+2. `analysis/hierarchical_players.py`: partial pooling of per-player hit rates (empirical Bayes or PyMC).
    Expect Judge 7/8 and Ohtani 4/4 to shrink toward ~70s.
-4. `analysis/by_month.py`: hit rate by month on dated rows + sequential posterior plot.
-5. `scripts/reconstruct_signals.py`: for dated rows, pull game logs (pybaseball / MLB stats API) to fill
-   S1 (last-5 streak vs line) and S6 (opposing SP quartile by xFIP/K%).
-6. `RESULTS.md` two-page note: what was measured, by split, with n and intervals; pitcher control as
+3. `analysis/by_month.py`: hit rate by month on dated rows + sequential posterior plot.
+4. `RESULTS.md` two-page note: what was measured, by split, with n and intervals; pitcher control as
    mechanism check; stake split; floor-not-ceiling framing; explicit list of unmeasurable signals.
-7. Finish engines + ingest for live NBA run (Dec–Mar), then MLB 2027.
+5. Finish engines + ingest for live NBA run (Dec–Mar), then MLB 2027.
 
 ## Style
 Honest limitations over encouragement. Every percentage next to its n. Small executable steps.
