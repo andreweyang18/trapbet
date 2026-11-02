@@ -11,9 +11,10 @@ Personal use only. No commercialization. Respect operator ToS. No profit claims 
   Hitter unders 89/139 (64.0%). Household-star unders (S3 v2) 7/8; v1 nine-player list 14/21. ≥$100 stake 123/191 (64.4%) vs <$100 35/70 (50.0%).
   Hitters ≥$100 95/143 (66.4%) vs <$100 17/35 (48.6%). S3 filled; S1/S2/S4/S5/S6/S7 blank.
 - DONE: `data/high_stake_slips.csv` — 42 slips with ≥$100 visible stake; fantasy legs 43/62 (69.4%).
-- DONE: Engines built and unit-tested (62 tests), pitcher weights verified 2026-11-02, Ohtani example in window; not yet run on live lines.
+- DONE: Engines built and unit-tested (69 tests incl. app smoke), pitcher weights verified 2026-11-02, Ohtani example in window; not yet run on live lines.
   `analysis/beta_binomial.py` runs (posteriors by split + plot). Public repo: https://github.com/andreweyang18/trapbet
-- NOT STARTED: ingest/ (DFS board + book odds snapshotter), Streamlit page, S1/S6 reconstruction script.
+- DONE: Streamlit app in app/ (Results, Playground, About); runs locally; not deployed yet.
+- NOT STARTED: ingest/ (DFS board + book odds snapshotter), S1/S6 reconstruction script.
 
 ## Data rules (do not change without asking me, the project owner)
 - One row per player per game-date. Same-day line movement → one row; if results differ, count as WIN

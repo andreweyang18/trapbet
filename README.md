@@ -7,6 +7,10 @@ devigged sportsbook component props? This repo holds a 2025 MLB backtest of ever
 I placed that season, plus the engines I am building to rebuild fair lines for a live test. It is
 personal research, not a commercial product and not betting advice, and I make no profit claim.
 
+**Live app:** _not yet deployed_ (placeholder; will be a Streamlit Community Cloud URL). Run it locally with
+`streamlit run app/streamlit_app.py`: a Results page with filters and live charts, a Playground that rebuilds a
+fair line from component markets, and an About page.
+
 ## Results
 
 **Headline.** 158 of 261 MLB fantasy-score props hit (60.5%, Wilson 95% CI 54–66%), against a
@@ -68,11 +72,11 @@ Full table, Beta-binomial posteriors, monthly rates, how I built the log, and ev
 | Component | State |
 |---|---|
 | Backtest data (Experiment 1) | **Complete.** `data/bet_log.csv`: 261 MLB fantasy-score props from 2025, all dated, 158/261 hit (60.5%, Wilson 95% CI 54–66%). `data/high_stake_slips.csv`: 42 slips with ≥$100 stake. Both regenerate byte-identically from `build_log.py` / `build_high_stake.py`. |
-| Analysis and figures | **Runs.** `analysis/beta_binomial.py` (Beta(5.77, 4.23) prior; P(p > 57.7%) = 0.82 for all 261 props, 0.35 for the 83-prop pitcher control) and `analysis/make_figures.py` write to `figures/`. |
-| Engines (scoring, devig, fair_line, simulate, trap, sizing) | **Built and unit-tested; worked example reproduces the hand calculation; not yet run on live lines.** `trapbet/engines/`, 62 tests in `tests/`. All four scoring tables verified 2026-11-02. |
+| Analysis and figures | **Runs.** `analysis/backtest_lib.py` and `analysis/figures_lib.py` hold the stats and charts; `analysis/beta_binomial.py` (Beta(5.77, 4.23) prior; P(p > 57.7%) = 0.82 for all 261 props, 0.35 for the 83-prop pitcher control) and `analysis/make_figures.py` write to `figures/`. |
+| Engines (scoring, devig, fair_line, simulate, trap, sizing) | **Built and unit-tested; worked example reproduces the hand calculation; not yet run on live lines.** `trapbet/engines/`, 69 tests in `tests/` (engines, analysis, app smoke). All four scoring tables verified 2026-11-02. |
 | S1 / S6 signal reconstruction from game logs | Not started. Next task. |
 | Ingestion (DFS board + book odds snapshotter) | Not started. |
-| Streamlit UI | Not started. |
+| Streamlit app (`app/`) | **Built, runs locally, not deployed.** Results page (filters, live charts, split table), Playground (devig → fair line → simulation → sizing, with the Ohtani example reproduced), About. Smoke-tested with `streamlit.testing`. |
 
 ## Rebuild
 
@@ -82,8 +86,9 @@ python build_log.py                  # data/mlbbets.txt + screenshot rows + data
 python build_high_stake.py           # -> data/high_stake_slips.csv
 python analysis/beta_binomial.py     # posterior table + figures/beta_binomial_posteriors.png
 python analysis/make_figures.py      # figures/hit_rate_by_{split,stake,month}.png
-python -m pytest -q                  # 62 tests
+python -m pytest -q                  # 69 tests
 python examples/ohtani_example.py    # PrizePicks 9.5 from three book markets: fair FS 7.66, P(under) 0.68, 3 units (illustrative inputs)
+streamlit run app/streamlit_app.py   # local app on http://localhost:8501
 ```
 
 ## Assumptions
