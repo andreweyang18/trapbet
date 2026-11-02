@@ -1,6 +1,8 @@
 import re, csv, sys, unicodedata
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # notes contain emoji; Windows console defaults to cp1252
-STARS={'ohtani','judge','soto','harper','betts','acuna','guerrero','tatis','ramirez'}
+# S3 star list lives in trapbet/engines/trap.py: STARS = {ohtani, judge} (v2, 2026-11-02);
+# STARS_V1 = the nine-player v1 definition 2026-10-29; superseded 2026-11-02, see RESULTS.md.
+from trapbet.engines.trap import STARS, STARS_V1, is_star  # noqa: F401  (run from the repo root)
 PITCHERS={'yamamoto','peterson','eflin','wheeler','holmes','schwellenbach','olson','brown','steele','gilbert','wacha','williams','pivetta','nola','degrom','sanchez','lugo','gray','springs','senga','flaherty','alcantara','blanco','rodon','kikuchi','mahle','skubal','miller','bieber','peralta','woo','strider','bibee','cabrera','manaea','corbin','cantillo','patrick','warren','fried','gallen','meyer','may','burnes','ragans','roupp','ortiz','sale','ryan','quintana','misiorowski','keller','rodriguez','abbott','falter','canning','kirby','estes','gil','lodolo','parker','vasquez','ray','imanaga','glasnow','melton','rogers','littell','schmidt','castillo'}
 # Matt Olson / Reese Olson, Hunter Brown / Ben Brown, Gavin Williams, Julio/Eduardo Rodriguez, Dustin May need first-name disambiguation
 HITTER_OVERRIDES={'matt olson','julio rodriguez','ben brown'}  # ben brown IS a pitcher; handled below
@@ -15,7 +17,7 @@ def role(name):
     if last in PITCHERS: return 'pitcher'
     return 'hitter'
 def star(name):
-    return 1 if any(s in norm(name) for s in STARS) else 0
+    return 1 if is_star(name, 'v2') else 0
 
 # ---- screenshot rows: (date, player, side, line, platform, result, note) ----
 # platform codes: prizepicks (Hitter/Pitcher Fantasy Score), underdog (Fantasy Points O/U Higher/Lower),

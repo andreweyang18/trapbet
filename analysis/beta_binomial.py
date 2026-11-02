@@ -21,6 +21,8 @@ BREAKEVEN_REAL = 0.577   # 3x payout on a 2-pick
 BREAKEVEN_CONV = 0.5     # log convention, odds_or_payout = 2.0
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from trapbet.engines.trap import is_star  # noqa: E402
 
 
 def wilson(w, n, z=1.96):
@@ -36,6 +38,11 @@ def wilson(w, n, z=1.96):
 def load(path):
     d = pd.read_csv(path)
     d["role"] = d["notes"].str.extract(r"role=(hitter|pitcher)")[0]
+    # S3_star in the CSV is the v2 (household) definition; derive v1 from names for comparison
+    v2 = d["player"].map(lambda p: int(is_star(p, "v2")))
+    if not (v2 == d["S3_star"]).all():
+        raise ValueError("S3_star column disagrees with trap.STARS; rebuild data/bet_log.csv")
+    d["S3_star_v1"] = d["player"].map(lambda p: int(is_star(p, "v1")))
     return d
 
 
@@ -47,7 +54,8 @@ def splits(d):
         ("Hitters",              hit),
         ("Pitchers (control)",   d["role"] == "pitcher"),
         ("Hitter unders",        hit & under),
-        ("Star-list unders (S3)", (d["S3_star"] == 1) & under),
+        ("Household-star unders (S3 v2: Ohtani, Judge)", (d["S3_star"] == 1) & under),
+        ("Star list v1 (9 players) unders", (d["S3_star_v1"] == 1) & under),
         ("Stake >= $100 (high_conf)", d["high_conf"] == 1),
         # comparison row, table only (not plotted)
         ("Stake < $100", d["high_conf"] == 0),
@@ -96,13 +104,16 @@ def plot(t, out):
     colors = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300"]
     surface, ink, ink2, grid, axis = "#fcfcfb", "#0b0b0b", "#5f5e58", "#e1e0d9", "#c3c2b7"
 
-    x = np.linspace(0.30, 0.90, 601)
+    x = np.linspace(0.30, 1.00, 701)
     fig, ax = plt.subplots(figsize=(9, 5), dpi=150, facecolor=surface)
     ax.set_facecolor(surface)
-    plotted = t.iloc[:6]  # the six primary splits; the stake < $100 comparison row is table-only
-    for (r, c) in zip(plotted.itertuples(), colors):
+    plotted = t.iloc[:7]  # the six primary splits plus the v1 star list; stake < $100 is table-only
+    # v1 star list is the same entity under an older definition: same hue as v2, dashed
+    styles = [(colors[0], "-"), (colors[1], "-"), (colors[2], "-"), (colors[3], "-"),
+              (colors[4], "-"), (colors[4], (0, (5, 2))), (colors[5], "-")]
+    for r, (c, ls) in zip(plotted.itertuples(), styles):
         y = stats.beta(r.a, r.b).pdf(x)
-        ax.plot(x, y, color=c, lw=2, label=f"{r.split}  {r.wins}/{r.n}")
+        ax.plot(x, y, color=c, lw=2, ls=ls, label=f"{r.split}  {r.wins}/{r.n}")
     prior = stats.beta(PRIOR_A, PRIOR_B).pdf(x)
     ax.plot(x, prior, color=ink2, lw=1.2, ls=(0, (3, 3)), label="Prior Beta(5.77, 4.23)")
     for v, lab in ((BREAKEVEN_CONV, "50% convention"), (BREAKEVEN_REAL, "57.7% real breakeven")):
@@ -120,7 +131,7 @@ def plot(t, out):
     for s in ("left", "bottom"):
         ax.spines[s].set_color(axis)
     ax.tick_params(colors=ink2, labelsize=8)
-    ax.legend(frameon=False, fontsize=8, labelcolor=ink, loc="upper left")
+    ax.legend(frameon=False, fontsize=8, labelcolor=ink, loc="upper right")
     fig.tight_layout()
     fig.savefig(out, facecolor=surface)
     return out

@@ -74,7 +74,8 @@ def split_masks(d: pd.DataFrame) -> list[tuple[str, pd.Series]]:
         ("Pitchers (control)", d["role"] == "pitcher"),
         ("Hitter unders", hit & under),
         ("Hitter overs", hit & (d["side"] == "over")),
-        ("Star-list unders", (d["S3_star"] == 1) & under),
+        ("Household-star unders\n(S3 v2: Ohtani, Judge)", (d["S3_star"] == 1) & under),
+        ("Star list v1 unders\n(9 players)", (d["S3_star_v1"] == 1) & under),
         ("Stake ≥ $100", d["high_conf"] == 1),
         ("Stake < $100", d["high_conf"] == 0),
     ]
@@ -87,7 +88,7 @@ def fig_by_split(d: pd.DataFrame, out: Path) -> Path:
     err = np.array([[r[3] - r[4] for r in rows], [r[5] - r[3] for r in rows]])
     y = np.arange(len(rows))
 
-    fig, ax = _fig(9, 5)
+    fig, ax = _fig(9, 5.6)
     ax.barh(y, rates, height=0.58, color=SERIES[0], zorder=2)
     ax.errorbar(rates, y, xerr=err, fmt="none", ecolor=INK2, elinewidth=1.2, capsize=3, zorder=3)
     for yi, (name, w, n, r, lo, hi) in zip(y, rows):

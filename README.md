@@ -38,9 +38,13 @@ log convention and the 57.7% two-pick breakeven. Splits overlap; they are not in
 - **Sizing tracked results.** My ≥ $100 tier beat my < $100 tier by 14 points overall
   (123/191 vs 35/70). I set stakes before results were known, but the sample is small and I did not
   pre-register the split.
-- **Signals not yet measured.** Of the seven trap signals, only S3 (star list) is filled for the
-  backtest. S1 (recent streak) and S6 (opposing pitcher) await game-log reconstruction. S2, S4,
+- **Signals not yet measured.** Of the seven trap signals, only S3 (household stars: Ohtani, Judge)
+  is filled for the backtest. S1 (recent streak) and S6 (opposing pitcher) await game-log reconstruction. S2, S4,
   S5 and S7 need line captures that do not exist for 2025.
+- **S3 was redefined after the results were known.** On 2026-11-02 I narrowed the star list from nine
+  players to the two household names, because the mechanism is casual-bettor popularity and casual
+  bettors know Ohtani and Judge, not Soto or Tatís. The v1 numbers are reported alongside v2 in
+  RESULTS.md and the figures so the effect of the redefinition is visible.
 - **The engine is unvalidated.** Its worked example is a regression test against my hand calculation,
   which uses the same devig convention. Passing it shows the arithmetic is reproduced, not that the
   method prices lines correctly. That needs live lines and settled results.
@@ -65,7 +69,7 @@ Full table, Beta-binomial posteriors, monthly rates, how I built the log, and ev
 |---|---|
 | Backtest data (Experiment 1) | **Complete.** `data/bet_log.csv`: 261 MLB fantasy-score props from 2025, all dated, 158/261 hit (60.5%, Wilson 95% CI 54–66%). `data/high_stake_slips.csv`: 42 slips with ≥$100 stake. Both regenerate byte-identically from `build_log.py` / `build_high_stake.py`. |
 | Analysis and figures | **Runs.** `analysis/beta_binomial.py` (Beta(5.77, 4.23) prior; P(p > 57.7%) = 0.82 for all 261 props, 0.35 for the 83-prop pitcher control) and `analysis/make_figures.py` write to `figures/`. |
-| Engines (scoring, devig, fair_line, simulate, trap, sizing) | **Built and unit-tested; worked example reproduces the hand calculation; not yet run on live lines.** `trapbet/engines/`, 61 tests in `tests/`. All four scoring tables verified 2026-11-02. |
+| Engines (scoring, devig, fair_line, simulate, trap, sizing) | **Built and unit-tested; worked example reproduces the hand calculation; not yet run on live lines.** `trapbet/engines/`, 62 tests in `tests/`. All four scoring tables verified 2026-11-02. |
 | S1 / S6 signal reconstruction from game logs | Not started. Next task. |
 | Ingestion (DFS board + book odds snapshotter) | Not started. |
 | Streamlit UI | Not started. |
@@ -78,7 +82,7 @@ python build_log.py                  # data/mlbbets.txt + screenshot rows + data
 python build_high_stake.py           # -> data/high_stake_slips.csv
 python analysis/beta_binomial.py     # posterior table + figures/beta_binomial_posteriors.png
 python analysis/make_figures.py      # figures/hit_rate_by_{split,stake,month}.png
-python -m pytest -q                  # 61 tests
+python -m pytest -q                  # 62 tests
 python examples/ohtani_example.py    # PrizePicks 9.5 from three book markets: fair FS 7.66, P(under) 0.68, 3 units (illustrative inputs)
 ```
 

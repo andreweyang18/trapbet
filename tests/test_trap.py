@@ -8,6 +8,17 @@ def ctx(**kw):
     return tp.PropContext(**base)
 
 
+def test_star_lists_v2_and_v1():
+    assert tp.STARS == {"ohtani", "judge"}
+    assert tp.STARS < tp.STARS_V1 and len(tp.STARS_V1) == 9
+    assert tp.is_star("Shohei Ohtani") and tp.is_star("Aaron Judge")
+    assert not tp.is_star("Juan Soto") and tp.is_star("Juan Soto", "v1")
+    assert tp.is_star("Ronald Acuña Jr.", "v1") and not tp.is_star("Ronald Acuña Jr.")
+    assert not tp.is_star("Vladimir Guerrero Jr.") and tp.is_star("Vladimir Guerrero Jr.", "v1")
+    with pytest.raises(ValueError):
+        tp.is_star("Aaron Judge", "v3")
+
+
 def test_all_missing_gives_all_none():
     s = tp.signals(ctx())
     assert set(s) == set(tp.SIGNAL_NAMES) and all(v is None for v in s.values())

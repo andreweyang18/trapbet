@@ -10,7 +10,7 @@ date,sport,platform,player,market,line,side,odds_or_payout,result,S1_streak,S2_p
 2025-04-04,mlb,prizepicks,Spencer Schwellenbach,fantasy_score,36.5,over,2.0,1,,,0,,,,,,,50,1,0,role=pitcher; notes_match:line589
 2025-04-05,mlb,prizepicks,Kyle Tucker,fantasy_score,9,under,2.0,1,,,0,,,,,,,325,6,1,role=hitter; notes_match:line582; 6 slips; also app_A same line; stake: 100+100+50+75+0(free)+boost slip amount cut off
 2025-04-05,mlb,prizepicks,Reese Olson,fantasy_score,32.5,over,2.0,1,,,0,,,,,,,175,4,1,role=pitcher; notes_match:line584; also app_A same line; stake: 100+75+0(free)+boost slip amount cut off
-2025-04-05,mlb,prizepicks,Fernando Tatis Jr.,fantasy_score,8,under,2.0,1,,,1,,,,,,,50,1,0,role=hitter; notes_match:line586
+2025-04-05,mlb,prizepicks,Fernando Tatis Jr.,fantasy_score,8,under,2.0,1,,,0,,,,,,,50,1,0,role=hitter; notes_match:line586
 2025-04-06,mlb,prizepicks,Ben Brown,fantasy_score,27.5,under,2.0,1,,,0,,,,,,,50,2,0,role=pitcher; notes_match:line580; 2 slips; stake: 25+25
 2025-04-07,mlb,underdog,Anthony Volpe,fantasy_score,6.5,under,2.0,1,,,0,,,,,,,30,2,0,role=hitter; notes_match:line70; stake: 10+20
 2025-04-07,mlb,underdog,Justin Steele,fantasy_score,34.5,over,2.0,1,,,0,,,,,,,30,2,0,role=pitcher; notes_match:line69; stake: 10+20
@@ -23,7 +23,7 @@ date,sport,platform,player,market,line,side,odds_or_payout,result,S1_streak,S2_p
 2025-04-11,mlb,prizepicks,Aaron Nola,fantasy_score,33.5,over,2.0,0,,,0,,,,,,,50,1,0,role=pitcher; notes_match:line557
 2025-04-11,mlb,prizepicks,Jacob deGrom,fantasy_score,37.5,over,2.0,0,,,0,,,,,,,153,1,1,role=pitcher; notes_match:line555
 2025-04-17,mlb,prizepicks,Cristopher Sanchez,fantasy_score,34.5,over,2.0,1,,,0,,,,,,,350,1,1,role=pitcher; notes_match:line551
-2025-04-21,mlb,prizepicks,Bryce Harper,fantasy_score,7.5,under,2.0,1,,,1,,,,,,,302,1,1,role=hitter; notes_match:line548
+2025-04-21,mlb,prizepicks,Bryce Harper,fantasy_score,7.5,under,2.0,1,,,0,,,,,,,302,1,1,role=hitter; notes_match:line548
 2025-04-23,mlb,app_A,Paul Goldschmidt,fantasy_score,5.5,over,2.0,1,,,0,,,,,,,100,1,1,role=hitter; notes_match:line545; prizepicks leg same prop voided
 2025-04-23,mlb,app_A,Steven Kwan,fantasy_score,6,under,2.0,1,,,0,,,,,,,100,1,1,role=hitter; notes_match:line544; prizepicks leg same prop voided
 2025-04-25,mlb,app_B,Seth Lugo,fantasy_score,26.5,over,2.0,1,,,0,,,,,,,100,3,1,"role=pitcher; notes_match:line140; 3 slips; stake: 70+10+20; MERGED notes line537 (seth lugo over 27 fantasy score ✅) same player/day, stake_band=over 100 LINE_MOVE (notes line 27.0, same result)"
@@ -44,14 +44,14 @@ date,sport,platform,player,market,line,side,odds_or_payout,result,S1_streak,S2_p
 2025-05-08,mlb,app_B,Byron Buxton,fantasy_score,7.5,under,2.0,0,,,0,,,,,,,132.5,3,1,role=hitter; notes_match:line133; 3 slips; stake: 10+112.50+10
 2025-05-08,mlb,app_B,Spencer Schwellenbach,fantasy_score,34.5,over,2.0,1,,,0,,,,,,,132.5,3,1,"role=pitcher; screenshot_only; BOTH_SIDES: under 34.5 lost (3-pick), over 34.5 won (2 slips); notes say u34.5 won - CONFIRM; stake: 10 (under) + 112.50 + 10 (over); MERGED notes line134 (spencer schwellenbach u34.5 fantasy ✅) same player/day, stake_band=over 100"
 2025-05-08,mlb,app_B,Zach Neto,fantasy_score,5.5,under,2.0,0,,,0,,,,,,,10,1,0,role=hitter; notes_match:line135
-2025-05-10,mlb,prizepicks,Fernando Tatis Jr.,fantasy_score,9.5,over,2.0,1,,,1,,,,,,,501,5,1,"role=hitter; notes_match:line485; also app_A; stake: 100+200+50+101+50; MERGED notes line63 (fernando tatis over 10.5 fantasy ✅) same player/day, stake_band=under 100 LINE_MOVE (notes line 10.5, same result)"
+2025-05-10,mlb,prizepicks,Fernando Tatis Jr.,fantasy_score,9.5,over,2.0,1,,,0,,,,,,,501,5,1,"role=hitter; notes_match:line485; also app_A; stake: 100+200+50+101+50; MERGED notes line63 (fernando tatis over 10.5 fantasy ✅) same player/day, stake_band=under 100 LINE_MOVE (notes line 10.5, same result)"
 2025-05-10,mlb,prizepicks,Byron Buxton,fantasy_score,6.5,under,2.0,1,,,0,,,,,,,150,3,1,role=hitter; notes_match:line577; stake: 50+50+50
 2025-05-10,mlb,prizepicks,Jonathan India,fantasy_score,5.5,under,2.0,1,,,0,,,,,,,100,2,1,role=hitter; notes_match:line488; also app_A; stake: 50+50
 2025-05-10,mlb,prizepicks,Vinnie Pasquantino,fantasy_score,4.5,under,2.0,0,,,0,,,,,,,401,4,1,role=hitter; notes_match:line486; also app_A; stake: 200+50+101+50
 2025-05-10,mlb,prizepicks,Jack Flaherty,fantasy_score,28.5,over,2.0,0,,,0,,,,,,,100,2,1,role=pitcher; notes_match:line487; also app_A; stake: 50+50
 2025-05-11,mlb,underdog,Sandy Alcantara,fantasy_score,30.5,over,2.0,0,,,0,,,,,,,470,7,1,role=pitcher; notes_match:line60; also app_B; stake: 40+10+10+70+10+200+130
 2025-05-11,mlb,underdog,Ronel Blanco,fantasy_score,31.5,over,2.0,1,,,0,,,,,,,620,8,1,role=pitcher; notes_match:line61; also app_B; stake: 40+10+10+70+10+200+130+150
-2025-05-11,mlb,underdog,Jose Ramirez,fantasy_score,7.5,under,2.0,1,,,1,,,,,,,428,5,1,"role=hitter; notes_match:line59; also app_B; also under 5.5 app_A won; stake: 40+10+70+150+158; MERGED notes line482 (jose ramirez under 5.5 fantasy ✅) same player/day, stake_band=over 100 LINE_MOVE (notes line 5.5, same result)"
+2025-05-11,mlb,underdog,Jose Ramirez,fantasy_score,7.5,under,2.0,1,,,0,,,,,,,428,5,1,"role=hitter; notes_match:line59; also app_B; also under 5.5 app_A won; stake: 40+10+70+150+158; MERGED notes line482 (jose ramirez under 5.5 fantasy ✅) same player/day, stake_band=over 100 LINE_MOVE (notes line 5.5, same result)"
 2025-05-11,mlb,app_A,Alec Bohm,fantasy_score,5,under,2.0,0,,,0,,,,,,,158,1,1,role=hitter; notes_match:line481
 2025-05-12,mlb,app_A,Jackson Merrill,fantasy_score,5.5,under,2.0,0,,,0,,,,,,,250,1,1,"role=hitter; screenshot_only; stake: amount partly obscured, read as 250 - verify"
 2025-05-16,mlb,app_A,Carlos Rodon,fantasy_score,35.5,under,2.0,1,,,0,,,,,,,60,2,0,"role=pitcher; notes_match:line458; stake: 10 (boosted 3-pick, stake inferred) + 50"
@@ -85,10 +85,10 @@ date,sport,platform,player,market,line,side,odds_or_payout,result,S1_streak,S2_p
 2025-10-04,mlb,,Naylor,fantasy_score,6.5,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line8; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-10-07,mlb,,Carlos Rodon,fantasy_score,27.5,under,2.0,1,,,0,,,,,,,,,1,role=pitcher; notes_only:line9; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-10-07,mlb,,Judge,fantasy_score,10.5,under,2.0,0,,,1,,,,,,,,,0,role=hitter; notes_only:line11; date+stake_band from Pikkit lookup (stake_band=under 100)
-2025-10-07,mlb,,Vladimir Guerrero,fantasy_score,9.5,under,2.0,0,,,1,,,,,,,,,0,role=hitter; notes_only:line12; date+stake_band from Pikkit lookup (stake_band=under 100)
+2025-10-07,mlb,,Vladimir Guerrero,fantasy_score,9.5,under,2.0,0,,,0,,,,,,,,,0,role=hitter; notes_only:line12; date+stake_band from Pikkit lookup (stake_band=under 100)
 2025-09-30,mlb,,Elly De La Cruz,fantasy_score,6.5,under,2.0,0,,,0,,,,,,,,,0,role=hitter; notes_only:line15; date+stake_band from Pikkit lookup (stake_band=under 100)
 2025-08-30,mlb,,William Contreras,fantasy_score,7.5,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line16; date+stake_band from Pikkit lookup (stake_band=over 100)
-2025-08-30,mlb,,Juan Soto,fantasy_score,8.5,under,2.0,0,,,1,,,,,,,,,1,role=hitter; notes_only:line17; date+stake_band from Pikkit lookup (stake_band=over 100)
+2025-08-30,mlb,,Juan Soto,fantasy_score,8.5,under,2.0,0,,,0,,,,,,,,,1,role=hitter; notes_only:line17; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-09-02,mlb,,Byron Buxton,fantasy_score,10.5,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line19; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-09-01,mlb,,Strider,fantasy_score,30.5,over,2.0,0,,,0,,,,,,,,,1,role=pitcher; notes_only:line21; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-09-01,mlb,,Ian Happ,fantasy_score,7.5,under,2.0,0,,,0,,,,,,,,,1,role=hitter; notes_only:line22; date+stake_band from Pikkit lookup (stake_band=over 100)
@@ -98,7 +98,7 @@ date,sport,platform,player,market,line,side,odds_or_payout,result,S1_streak,S2_p
 2025-08-25,mlb,,Spencer Strider,fantasy_score,31.5,over,2.0,1,,,0,,,,,,,,,1,role=pitcher; notes_only:line30; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-08-25,mlb,,Tanner Bibee,fantasy_score,32.5,over,2.0,0,,,0,,,,,,,,,1,role=pitcher; notes_only:line31; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-08-25,mlb,,Edward Cabrera,fantasy_score,32.5,under,2.0,0,,,0,,,,,,,,,1,role=pitcher; notes_only:line32; date+stake_band from Pikkit lookup (stake_band=over 100)
-2025-08-04,mlb,,Jose Ramirez,fantasy_score,8.5,under,2.0,1,,,1,,,,,,,,,1,role=hitter; notes_only:line34; date+stake_band from Pikkit lookup (stake_band=over 100)
+2025-08-04,mlb,,Jose Ramirez,fantasy_score,8.5,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line34; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-08-04,mlb,,Patrick Corbin,fantasy_score,27.5,under,2.0,1,,,0,,,,,,,,,1,role=pitcher; notes_only:line35; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-07-31,mlb,,Marcus Semien,fantasy_score,6.5,under,2.0,1,,,0,,,,,,,,,0,role=hitter; notes_only:line37; date+stake_band from Pikkit lookup (stake_band=under 100)
 2025-07-13,mlb,,Judge,fantasy_score,11.5,under,2.0,1,,,1,,,,,,,,,1,role=hitter; notes_only:line41; date+stake_band from Pikkit lookup (stake_band=over 100)
@@ -128,9 +128,9 @@ date,sport,platform,player,market,line,side,odds_or_payout,result,S1_streak,S2_p
 2025-07-12,mlb,,Zack Wheeler,fantasy_score,40.5,under,2.0,1,,,0,,,,,,,,,0,role=pitcher; notes_only:line86; date+stake_band from Pikkit lookup (stake_band=under 100)
 2025-07-12,mlb,,Corey Seager,fantasy_score,8.5,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line87; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-07-12,mlb,,Cody Bellinger,fantasy_score,8.5,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line88; date+stake_band from Pikkit lookup (stake_band=over 100)
-2025-07-06,mlb,,Juan Soto,fantasy_score,7.5,under,2.0,1,,,1,,,,,,,,,1,role=hitter; notes_only:line90; date+stake_band from Pikkit lookup (stake_band=over 100)
+2025-07-06,mlb,,Juan Soto,fantasy_score,7.5,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line90; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-07-05,mlb,,Jarren Duran,fantasy_score,6.5,under,2.0,0,,,0,,,,,,,,,1,role=hitter; notes_only:line92; date+stake_band from Pikkit lookup (stake_band=over 100)
-2025-07-05,mlb,,Ronald Acuna,fantasy_score,8.5,over,2.0,0,,,1,,,,,,,,,1,role=hitter; notes_only:line93; date+stake_band from Pikkit lookup (stake_band=over 100)
+2025-07-05,mlb,,Ronald Acuna,fantasy_score,8.5,over,2.0,0,,,0,,,,,,,,,1,role=hitter; notes_only:line93; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-07-02,mlb,,Hunter Brown,fantasy_score,41.5,under,2.0,0,,,0,,,,,,,,,0,role=pitcher; notes_only:line94; date+stake_band from Pikkit lookup (stake_band=under 100)
 2025-06-27,mlb,,Mitch Keller,fantasy_score,26.5,over,2.0,1,,,0,,,,,,,,,1,role=pitcher; notes_only:line98; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-06-27,mlb,,Jarren Duran,fantasy_score,7.5,over,2.0,0,,,0,,,,,,,,,1,role=hitter; notes_only:line99; date+stake_band from Pikkit lookup (stake_band=over 100)
@@ -156,19 +156,19 @@ date,sport,platform,player,market,line,side,odds_or_payout,result,S1_streak,S2_p
 2025-10-04,mlb,,Luis Gil,fantasy_score,16.5,under,2.0,1,,,0,,,,,,,,,1,role=pitcher; notes_only:line173; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-10-04,mlb,,Troy Melton,fantasy_score,13.5,over,2.0,1,,,0,,,,,,,,,1,role=pitcher; notes_only:line174; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-10-04,mlb,,Josh Naylor,fantasy_score,5.5,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line176; date+stake_band from Pikkit lookup (stake_band=over 100)
-2025-09-23,mlb,,Juan Soto,fantasy_score,7.5,under,2.0,0,,,1,,,,,,,,,1,role=hitter; notes_only:line181; date+stake_band from Pikkit lookup (stake_band=over 100)
+2025-09-23,mlb,,Juan Soto,fantasy_score,7.5,under,2.0,0,,,0,,,,,,,,,1,role=hitter; notes_only:line181; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-09-17,mlb,,Bo Naylor,fantasy_score,5.0,under,2.0,0,,,0,,,,,,,,,1,"role=hitter; notes_only:line184; date+stake_band from Pikkit lookup (stake_band=over 100); DATE_TYPO? given 9/17/23, assumed 2025"
 2025-09-17,mlb,,Kyle Schwarber,fantasy_score,6.5,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line185; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-09-17,mlb,,Josh Naylor,fantasy_score,5.5,under,2.0,0,,,0,,,,,,,,,1,role=hitter; notes_only:line189; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-09-12,mlb,,Jakob Marsee,fantasy_score,5.0,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line193; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-09-12,mlb,,Jackson Holliday,fantasy_score,6.5,under,2.0,0,,,0,,,,,,,,,1,role=hitter; notes_only:line194; date+stake_band from Pikkit lookup (stake_band=over 100)
-2025-09-09,mlb,,Vladimir Guerrero,fantasy_score,7.0,under,2.0,0,,,1,,,,,,,,,0,role=hitter; notes_only:line197; date+stake_band from Pikkit lookup (stake_band=under 100)
+2025-09-09,mlb,,Vladimir Guerrero,fantasy_score,7.0,under,2.0,0,,,0,,,,,,,,,0,role=hitter; notes_only:line197; date+stake_band from Pikkit lookup (stake_band=under 100)
 2025-09-05,mlb,,Byron Buxton,fantasy_score,8.0,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line198; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-08-30,mlb,,Manny Machado,fantasy_score,6.5,over,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line202; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-08-30,mlb,,Alex Bregman,fantasy_score,6.5,over,2.0,0,,,0,,,,,,,,,1,role=hitter; notes_only:line203; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-08-20,mlb,,Chris Sale,fantasy_score,36.5,under,2.0,0,,,0,,,,,,,,,1,role=pitcher; notes_only:line204; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-08-30,mlb,,Trevor Rogers,fantasy_score,32.5,under,2.0,0,,,0,,,,,,,,,1,role=pitcher; notes_only:line205; date+stake_band from Pikkit lookup (stake_band=over 100)
-2025-09-30,mlb,,Juan Soto,fantasy_score,7.5,under,2.0,0,,,1,,,,,,,,,1,role=hitter; notes_only:line206; date+stake_band from Pikkit lookup (stake_band=over 100)
+2025-09-30,mlb,,Juan Soto,fantasy_score,7.5,under,2.0,0,,,0,,,,,,,,,1,role=hitter; notes_only:line206; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-08-30,mlb,,Bo Bichette,fantasy_score,7.0,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line207; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-08-29,mlb,,Bo Bichette,fantasy_score,6.5,under,2.0,0,,,0,,,,,,,,,1,role=hitter; notes_only:line208; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-08-29,mlb,,Mitchell Parker,fantasy_score,18.5,over,2.0,1,,,0,,,,,,,,,0,role=pitcher; notes_only:line210; date+stake_band from Pikkit lookup (stake_band=under 100)
@@ -180,7 +180,7 @@ date,sport,platform,player,market,line,side,odds_or_payout,result,S1_streak,S2_p
 2025-08-26,mlb,,Mitch Keller,fantasy_score,27.5,over,2.0,1,,,0,,,,,,,,,1,role=pitcher; notes_only:line219; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-08-26,mlb,,Hunter Brown,fantasy_score,39.5,over,2.0,0,,,0,,,,,,,,,1,role=pitcher; notes_only:line220; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-08-04,mlb,,Nick Lodolo,fantasy_score,29.5,under,2.0,1,,,0,,,,,,,,,1,role=pitcher; notes_only:line223; date+stake_band from Pikkit lookup (stake_band=over 100)
-2025-08-04,mlb,,Jose Ramirez,fantasy_score,7.5,under,2.0,1,,,1,,,,,,,,,1,role=hitter; notes_only:line224; date+stake_band from Pikkit lookup (stake_band=over 100)
+2025-08-04,mlb,,Jose Ramirez,fantasy_score,7.5,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line224; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-08-04,mlb,,Tj Friedl,fantasy_score,5.5,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line225; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-08-03,mlb,,Corey Seager,fantasy_score,7.0,over,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line226; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-08-03,mlb,,Seth Lugo,fantasy_score,27.5,under,2.0,1,,,0,,,,,,,,,1,role=pitcher; notes_only:line227; date+stake_band from Pikkit lookup (stake_band=over 100)
@@ -208,19 +208,19 @@ date,sport,platform,player,market,line,side,odds_or_payout,result,S1_streak,S2_p
 2025-07-12,mlb,,Christian Walker,fantasy_score,4.5,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line263; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-07-12,mlb,,Jazz Chisholm,fantasy_score,5.5,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line264; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-07-06,mlb,,Byron Buxton,fantasy_score,6.5,over,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line275; date+stake_band from Pikkit lookup (stake_band=over 100)
-2025-07-06,mlb,,Juan Soto,fantasy_score,6.5,under,2.0,1,,,1,,,,,,,,,1,role=hitter; notes_only:line276; date+stake_band from Pikkit lookup (stake_band=over 100)
-2025-07-05,mlb,,Ronald Acuna,fantasy_score,8.5,over,2.0,0,,,1,,,,,,,,,1,role=hitter; notes_only:line277; date+stake_band from Pikkit lookup (stake_band=over 100)
+2025-07-06,mlb,,Juan Soto,fantasy_score,6.5,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line276; date+stake_band from Pikkit lookup (stake_band=over 100)
+2025-07-05,mlb,,Ronald Acuna,fantasy_score,8.5,over,2.0,0,,,0,,,,,,,,,1,role=hitter; notes_only:line277; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-07-04,mlb,,Randy Vasquez,fantasy_score,19.5,under,2.0,1,,,0,,,,,,,,,1,role=pitcher; notes_only:line282; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-07-03,mlb,,Randy Arozarena,fantasy_score,6.0,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line283; date+stake_band from Pikkit lookup (stake_band=over 100)
-2025-07-03,mlb,,Jose Ramirez,fantasy_score,7.5,over,2.0,0,,,1,,,,,,,,,0,role=hitter; notes_only:line284; date+stake_band from Pikkit lookup (stake_band=under 100)
+2025-07-03,mlb,,Jose Ramirez,fantasy_score,7.5,over,2.0,0,,,0,,,,,,,,,0,role=hitter; notes_only:line284; date+stake_band from Pikkit lookup (stake_band=under 100)
 2025-07-03,mlb,,Bobby Witt Jr,fantasy_score,8.5,under,2.0,0,,,0,,,,,,,,,1,role=hitter; notes_only:line289; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-07-02,mlb,,Jake Meyers,fantasy_score,8.5,over,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line290; date+stake_band from Pikkit lookup (stake_band=over 100)
-2025-07-02,mlb,,Ronald Acuna,fantasy_score,9.5,over,2.0,0,,,1,,,,,,,,,1,role=hitter; notes_only:line291; date+stake_band from Pikkit lookup (stake_band=over 100)
+2025-07-02,mlb,,Ronald Acuna,fantasy_score,9.5,over,2.0,0,,,0,,,,,,,,,1,role=hitter; notes_only:line291; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-07-02,mlb,,Zach Neto,fantasy_score,6.5,over,2.0,0,,,0,,,,,,,,,1,role=hitter; notes_only:line292; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-07-01,mlb,,Ramon Laureano,fantasy_score,5.0,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line295; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-07-01,mlb,,Jake Meyers,fantasy_score,8.5,over,2.0,0,,,0,,,,,,,,,1,role=hitter; notes_only:line297; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-07-01,mlb,,Joe Ryan,fantasy_score,36.5,over,2.0,0,,,0,,,,,,,,,0,role=pitcher; notes_only:line299; date+stake_band from Pikkit lookup (stake_band=under 100)
-2025-07-01,mlb,,Ronald Acuna,fantasy_score,9.5,over,2.0,0,,,1,,,,,,,,,0,role=hitter; notes_only:line300; date+stake_band from Pikkit lookup (stake_band=under 100)
+2025-07-01,mlb,,Ronald Acuna,fantasy_score,9.5,over,2.0,0,,,0,,,,,,,,,0,role=hitter; notes_only:line300; date+stake_band from Pikkit lookup (stake_band=under 100)
 2025-06-30,mlb,,Corey Seager,fantasy_score,7.5,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line302; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-06-30,mlb,,Geraldo Perdomo,fantasy_score,5.5,under,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line303; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-06-27,mlb,,Bobby Witt,fantasy_score,8.0,over,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line308; date+stake_band from Pikkit lookup (stake_band=over 100)
@@ -228,7 +228,7 @@ date,sport,platform,player,market,line,side,odds_or_payout,result,S1_streak,S2_p
 2025-06-27,mlb,,Logan Gilbert,fantasy_score,37.5,over,2.0,0,,,0,,,,,,,,,1,role=pitcher; notes_only:line310; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-06-27,mlb,,Jose Quintana,fantasy_score,28.5,over,2.0,0,,,0,,,,,,,,,1,role=pitcher; notes_only:line312; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-06-26,mlb,,Griffin Canning,fantasy_score,24.5,over,2.0,0,,,0,,,,,,,,,0,role=pitcher; notes_only:line314; date+stake_band from Pikkit lookup (stake_band=under 100)
-2025-06-25,mlb,,Ronald Acuna,fantasy_score,9.5,under,2.0,0,,,1,,,,,,,,,0,role=hitter; notes_only:line322; date+stake_band from Pikkit lookup (stake_band=under 100)
+2025-06-25,mlb,,Ronald Acuna,fantasy_score,9.5,under,2.0,0,,,0,,,,,,,,,0,role=hitter; notes_only:line322; date+stake_band from Pikkit lookup (stake_band=under 100)
 2025-06-24,mlb,,Shohei Ohtani,fantasy_score,12.5,over,2.0,1,,,1,,,,,,,,,1,role=hitter; notes_only:line330; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-06-15,mlb,,Bobby Witt Jr,fantasy_score,7.5,over,2.0,1,,,0,,,,,,,,,1,role=hitter; notes_only:line356; date+stake_band from Pikkit lookup (stake_band=over 100)
 2025-06-14,mlb,,Landen Roupp,fantasy_score,19.5,under,2.0,1,,,0,,,,,,,,,1,role=pitcher; notes_only:line357; date+stake_band from Pikkit lookup (stake_band=over 100)

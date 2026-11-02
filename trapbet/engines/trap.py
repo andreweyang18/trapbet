@@ -9,7 +9,10 @@ platform scale as `line`; `other_platform_line_converted` is already converted t
 Signal definitions (from the project brief):
   S1 streak: all five of last5 on the same side of the line.
   S2 popular: popularity_rank <= 25.
-  S3 star: player on the star list.
+  S3 star: player is a household name (STARS, v2: Ohtani, Judge). Rationale: the mechanism is
+     casual-bettor popularity inflating DFS lines, and casual bettors know household names, not
+     baseball-fan names. The v1 list (STARS_V1, nine players) mixed household names with players
+     only fans follow; it is kept for comparison and reported alongside v2 in RESULTS.md.
   S4 cross-platform: |line - other platform line converted| >= 1.0.
   S5 fair gap: line - fair_fs >= 1.0 (lean under) or <= -1.0 (lean over).
   S6 matchup: opposing SP top quartile (lean under) or bottom quartile (lean over),
@@ -18,6 +21,8 @@ Signal definitions (from the project brief):
 """
 from __future__ import annotations
 
+import re
+import unicodedata
 from dataclasses import dataclass, field
 from typing import Optional, Sequence
 
@@ -25,6 +30,27 @@ GAP_THRESHOLD = 1.0
 POPULAR_RANK = 25
 SIGNAL_NAMES = ("S1", "S2", "S3", "S4", "S5", "S6", "S7")
 S5_WEIGHT = 2
+
+# S3 star list, v2 (2026-11-02): household names only. Matched as lowercase ASCII substrings of
+# the player's name, so "judge" matches "Aaron Judge" and "acuna" matches "Ronald Acuña Jr.".
+STARS = frozenset({"ohtani", "judge"})
+# v1 definition 2026-10-29; superseded 2026-11-02, see RESULTS.md ("Definition changes").
+STARS_V1 = frozenset({"ohtani", "judge", "soto", "harper", "betts", "acuna", "guerrero",
+                      "tatis", "ramirez"})
+STAR_LISTS = {"v2": STARS, "v1": STARS_V1}
+
+
+def _norm(name: str) -> str:
+    s = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode().lower()
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def is_star(player: str, version: str = "v2") -> bool:
+    """True if `player` matches the S3 star list for `version` ("v2" default, or "v1")."""
+    if version not in STAR_LISTS:
+        raise ValueError(f"unknown star-list version {version!r}; use 'v2' or 'v1'")
+    n = _norm(player)
+    return any(s in n for s in STAR_LISTS[version])
 
 
 @dataclass

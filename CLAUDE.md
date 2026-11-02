@@ -8,10 +8,10 @@ Personal use only. No commercialization. Respect operator ToS. No profit claims 
 - DONE: Experiment 1 data. `data/bet_log.csv` = 261 unique MLB fantasy-score props from the 2025
   season (every bet placed, incl. losses), deduped per player per game-date, voids dropped. ALL 261 DATED.
   158/261 = 60.5% (Wilson 95% CI 54–66%). Hitters 112/178 (62.9%), pitchers 46/83 (55.4%).
-  Hitter unders 89/139 (64.0%). Star-list unders 14/21. ≥$100 stake 123/191 (64.4%) vs <$100 35/70 (50.0%).
+  Hitter unders 89/139 (64.0%). Household-star unders (S3 v2) 7/8; v1 nine-player list 14/21. ≥$100 stake 123/191 (64.4%) vs <$100 35/70 (50.0%).
   Hitters ≥$100 95/143 (66.4%) vs <$100 17/35 (48.6%). S3 filled; S1/S2/S4/S5/S6/S7 blank.
 - DONE: `data/high_stake_slips.csv` — 42 slips with ≥$100 visible stake; fantasy legs 43/62 (69.4%).
-- DONE: Engines built and unit-tested (61 tests), pitcher weights verified 2026-11-02, Ohtani example in window; not yet run on live lines.
+- DONE: Engines built and unit-tested (62 tests), pitcher weights verified 2026-11-02, Ohtani example in window; not yet run on live lines.
   `analysis/beta_binomial.py` runs (posteriors by split + plot). Public repo: https://github.com/andreweyang18/trapbet
 - NOT STARTED: ingest/ (DFS board + book odds snapshotter), Streamlit page, S1/S6 reconstruction script.
 
@@ -26,6 +26,17 @@ Personal use only. No commercialization. Respect operator ToS. No profit claims 
 - Rows tagged `BOTH_SIDES` (Schwellenbach 5/8, A. Garcia 5/23) and `DATE_TYPO?` are flagged, not resolved.
 - Notes-only rows are canonical for result; screenshots are canonical for date/stake/platform.
 - Platform codes: prizepicks, underdog, app_A ("Fantasy Points — Full Game"), app_B (fantasy points with American odds). I still need to map app_A/app_B to ParlayPlay/Boom.
+
+## Trap signal definitions (TRAP_DEFINITION)
+- S1 streak: all five of last5 on the same side of the line. S2 popular: popularity rank ≤ 25.
+- S3 star: household names only — `trap.STARS` = {ohtani, judge} (v2, 2026-11-02). Rationale: the mechanism is
+  casual-bettor popularity inflating DFS lines, and casual bettors know household names, not baseball-fan names.
+  v1 (2026-10-29) was nine players (`trap.STARS_V1`); it mixed household names with players only fans follow.
+  Redefined after backtest results were known; always report v1 alongside v2 (see RESULTS.md).
+- S4 cross-platform: |line − other platform line converted| ≥ 1.0. S5 fair gap: line − fair ≥ 1.0 lean under,
+  ≤ −1.0 lean over (counts double). S6 matchup: opposing SP top quartile lean under / bottom quartile lean over,
+  or platoon disadvantage. S7 reverse move: line moved against the streak side since open.
+- Missing input → None, not 0. Candidate: score ≥ 2 with S5, or score ≥ 3. lean(): S5 → S6 → fade the streak.
 
 ## Rebuild
 `python build_log.py` regenerates data/bet_log.csv from data/mlbbets.txt (notes), the screenshot rows
