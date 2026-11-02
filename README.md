@@ -1,6 +1,6 @@
 # trapbet
 
-Built by Andrew Yang — Applied Mathematics, UCLA (Statistics & Data Science minor) — as a personal research project. [LinkedIn](https://www.linkedin.com/in/TODO-fill-in)
+Built by Andrew Yang — Applied Mathematics, UCLA (Statistics & Data Science minor) — as a personal research project. [LinkedIn](https://www.linkedin.com/in/andreweyang)
 
 Are DFS fantasy-score lines (PrizePicks, Underdog) mispriced relative to a fair line rebuilt from
 devigged sportsbook component props? This repo holds a 2025 MLB backtest of every fantasy-score prop
